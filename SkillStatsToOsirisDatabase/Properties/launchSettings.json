@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SkillStatsToOsirisDatabase": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Divinity Original Sin 2\\DefEd\\Data\\Editor\\Mods\\Shared\\Stats\\SkillData\""
+    }
+  }
+}
