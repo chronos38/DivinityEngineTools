@@ -18,7 +18,7 @@ namespace CustomStates
             {
                 { "Strength", new List<Tuple<string, int>> { Tuple.Create("DamageBoost", 3), Tuple.Create("ArmorBoost", 2) } },
                 { "Finesse", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("DodgeBoost", 1) } },
-                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("RangeBoost", 20), Tuple.Create("MagicArmourBoost", 2) } },
+                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("RangeBoost", 20), Tuple.Create("MagicArmorBoost", 2) } },
                 { "Constitution", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 2) } },
                 { "Memory", new List<Tuple<string, int>> { Tuple.Create("MagicArmorBoost", 2) } },
                 { "Wits", new List<Tuple<string, int>> { } },
@@ -26,7 +26,7 @@ namespace CustomStates
                 { "RogueLore", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 1) } },
                 { "FireSpecialist", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 3) } },
                 { "EarthSpecialist", new List<Tuple<string, int>> { Tuple.Create("VitalityBoost", 3), Tuple.Create("AccuracyBoost", 3) } },
-                { "WaterSpecialist", new List<Tuple<string, int>> { Tuple.Create("MovementSpeedBoost", 30) } },
+                { "WaterSpecialist", new List<Tuple<string, int>> { Tuple.Create("Movement", 30) } },
                 { "AirSpecialist", new List<Tuple<string, int>> { Tuple.Create("DodgeBoost", 3) } }
             };
 
@@ -47,7 +47,7 @@ namespace CustomStates
                 });
                 statusLines.AddRange(new List<string>
                 {
-                    string.Format("new entry \"_Chronos38_{0}\"\r\n", stat),
+                    string.Format("new entry \"_Chronos38_CustomStatValue_{0}\"\r\n", stat),
                     "type \"StatusData\"\r\n",
                     "data \"StatusType\" \"CONSUME\"\r\n",
                     "\r\n"
@@ -64,7 +64,7 @@ namespace CustomStates
                 {
                     "<stat_object color=\"#FF5F9EA0\" is_substat=\"false\">\r\n",
                     "<fields>\r\n",
-                    string.Format("<field name=\"Name\" type=\"NameStatObjectFieldDefinition\" value=\"_Chronos38_{0}\" />\r\n", stat),
+                    string.Format("<field name=\"Name\" type=\"NameStatObjectFieldDefinition\" value=\"_Chronos38_CustomStatValue_{0}\" />\r\n", stat),
                     "</fields>\r\n",
                     "</stat_object>\r\n"
                 });
@@ -97,7 +97,7 @@ namespace CustomStates
                     potionXmlLines.Add("</stat_object>\r\n");
 
                     /////////////////////////////////////////////////////////////////////////////////////
-                    statusLines.Add(string.Format("new entry \"Chronos38_{0}_{1}\"\r\n", stat, i));
+                    statusLines.Add(string.Format("new entry \"Chronos38_CustomStatValue_{0}_{1}\"\r\n", stat, i));
                     statusLines.Add("type \"StatusData\"\r\n");
                     statusLines.Add("data \"StatusType\" \"CONSUME\"\r\n");
                     statusLines.Add(string.Format("data \"StatsId\" \"Chronos38_Stats_{0}_{1}\"\r\n", stat, i));
@@ -105,7 +105,7 @@ namespace CustomStates
 
                     statusXmlLines.Add("<stat_object is_substat=\"false\">\r\n");
                     statusXmlLines.Add("<fields>\r\n");
-                    statusXmlLines.Add(string.Format("<field name=\"Name\" type=\"NameStatObjectFieldDefinition\" value=\"Chronos38_{0}_{1}\" />\r\n", stat, i));
+                    statusXmlLines.Add(string.Format("<field name=\"Name\" type=\"NameStatObjectFieldDefinition\" value=\"Chronos38_CustomStatValue_{0}_{1}\" />\r\n", stat, i));
                     statusXmlLines.Add(string.Format("<field name=\"StatsId\" type=\"StringStatObjectFieldDefinition\" value=\"Chronos38_Stats_{0}_{1}\" />\r\n", stat, i));
                     statusXmlLines.Add("</fields>\r\n");
                     statusXmlLines.Add("</stat_object>\r\n");
