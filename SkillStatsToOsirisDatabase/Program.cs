@@ -16,9 +16,11 @@ namespace SkillStatsToOsirisDatabase
                 return;
             }
 
-            var fileLines = new List<string>();
+            var levelMapLines = new List<string>();
+            var dependencyMapLines = new List<string>();
             var files = Directory.EnumerateFiles(args[0]);
-            var databaseName = "DB_Chronos38_AbilitySkillLevelMap";
+            var abilitySkillLevelMap = "DB_Chronos38_AbilitySkillLevelMap";
+            var abilitySkillCrossDependencyMap = "DB_Chronos38_AbilitySkillCrossDependencyMap";
 
             foreach (var filePath in files)
             {
@@ -51,24 +53,41 @@ namespace SkillStatsToOsirisDatabase
 
                     var skillName = nameAttribute.Value;
                     var skillRequirements = requirementValue.Split("; ");
-                    var skillSchools = "";
+                    var skillTypes = "";
                     var skillLevel = 0;
 
                     foreach (var skillRequirement in skillRequirements)
                     {
                         var parts = skillRequirement.Split(' ');
-                        skillSchools = skillSchools.Length > 0 
-                            ? string.Format("{0}+{1}", skillSchools, parts.First()) 
+                        skillTypes = skillTypes.Length > 0 
+                            ? string.Format("{0}+{1}", skillTypes, parts.First()) 
                             : string.Format("{0}", parts.First());
                         skillLevel = Math.Max(skillLevel, int.Parse(parts.Last()));
                     }
 
-                    fileLines.Add(string.Format("{0}(\"{1}\", {2}, \"{3}_{4}\");\r\n", databaseName, skillSchools, skillLevel, skillType, skillName));
+                    if (skillTypes.Contains("+"))
+                    {
+                        var skillDependencies = skillTypes.Split('+');
+                        var firstSkillDependency = skillDependencies.First();
+                        var secondSkillDependency = skillDependencies.Last();
+                        var dependencyMapLine = string.Format("{0}(\"{1}\", \"{2}\");\r\n", abilitySkillCrossDependencyMap, firstSkillDependency, secondSkillDependency);
+
+                        if (!dependencyMapLines.Contains(dependencyMapLine))
+                        {
+                            dependencyMapLines.Add(dependencyMapLine);
+                        }
+                    }
+
+                    levelMapLines.Add(string.Format("{0}(\"{1}\", {2}, \"{3}_{4}\");\r\n", abilitySkillLevelMap, skillTypes, skillLevel, skillType, skillName));
                 }
             }
 
-            fileLines.Sort();
-            var fileContent = fileLines.Aggregate((content, current) => content += current);
+            levelMapLines.Sort();
+            dependencyMapLines.Sort();
+            var levelMapFileContent = levelMapLines.Aggregate((content, current) => content += current);
+            var dependencyMapFileContent = dependencyMapLines.Aggregate((content, current) => content += current);
+            var fileContent = string.Format("{0}\r\n{1}", levelMapFileContent, dependencyMapFileContent);
+
             File.WriteAllText("a.out", fileContent);
         }
     }
