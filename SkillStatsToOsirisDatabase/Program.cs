@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -15,12 +16,13 @@ namespace SkillStatsToOsirisDatabase
                 return;
             }
 
-            var fileContent = "";
+            var fileLines = new List<string>();
             var files = Directory.EnumerateFiles(args[0]);
             var databaseName = "DB_Chronos38_AbilitySkillLevelMap";
 
             foreach (var filePath in files)
             {
+                var skillType = Path.GetFileNameWithoutExtension(filePath);
                 var document = new XmlDocument();
                 document.Load(filePath);
 
@@ -48,11 +50,25 @@ namespace SkillStatsToOsirisDatabase
                     }
 
                     var skillName = nameAttribute.Value;
-                    var parts = requirementValue.Split(' ');
-                    fileContent += string.Format("{0}(\"{1}\", {2}, \"{3}\");\r\n", databaseName, parts.First(), int.Parse(parts.Last()), skillName);
+                    var skillRequirements = requirementValue.Split("; ");
+                    var skillSchools = "";
+                    var skillLevel = 0;
+
+                    foreach (var skillRequirement in skillRequirements)
+                    {
+                        var parts = skillRequirement.Split(' ');
+                        skillSchools = skillSchools.Length > 0 
+                            ? string.Format("{0}+{1}", skillSchools, parts.First()) 
+                            : string.Format("{0}", parts.First());
+                        skillLevel = Math.Max(skillLevel, int.Parse(parts.Last()));
+                    }
+
+                    fileLines.Add(string.Format("{0}(\"{1}\", {2}, \"{3}_{4}\");\r\n", databaseName, skillSchools, skillLevel, skillType, skillName));
                 }
             }
 
+            fileLines.Sort();
+            var fileContent = fileLines.Aggregate((content, current) => content += current);
             File.WriteAllText("a.out", fileContent);
         }
     }
