@@ -16,12 +16,14 @@ namespace CustomStates
             var statusXmlLines = new List<string>();
             var entries = new Dictionary<string, List<Tuple<string, int>>>
             {
+                // Attributes
                 { "Strength", new List<Tuple<string, int>> { Tuple.Create("DamageBoost", 3), Tuple.Create("ArmorBoost", 2) } },
-                { "Finesse", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("DodgeBoost", 1) } },
+                { "Finesse", new List<Tuple<string, int>> { Tuple.Create("Initiative", 1), Tuple.Create("DodgeBoost", 1) } },
                 { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("RangeBoost", 20), Tuple.Create("MagicArmorBoost", 2) } },
-                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 2) } },
-                { "Memory", new List<Tuple<string, int>> { Tuple.Create("MagicArmorBoost", 2) } },
-                { "Wits", new List<Tuple<string, int>> { } },
+                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("VitalityBoost", 5), Tuple.Create("ArmorBoost", 2) } },
+                { "Memory", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 1), Tuple.Create("MagicArmorBoost", 2) } },
+                { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("DodgeBoost", 1) } },
+                // Abilities
                 { "WarriorLore", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 3), Tuple.Create("MagicArmorBoost", 3) } },
                 { "RogueLore", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 1) } },
                 { "FireSpecialist", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 3) } },
