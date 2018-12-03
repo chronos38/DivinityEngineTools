@@ -50,10 +50,12 @@ namespace CreateNpcAttributeDatabase
                     {
                         var dk = valueIterator - currentValue;
                         var interpolate = dk / (float)(nextValue - currentValue);
-                        var mappedValue = interpolate < .5f ? attribute + 10 : attribute + 11;
+                        var mappedValue = 2 * attribute + 10 + (int)Math.Round(interpolate * 2);
                         databaseLines.Add(string.Format("{0}({1}, {2}, {3});\r\n", databaseName, level, valueIterator, mappedValue));
                     }
                 }
+
+                databaseLines.Add(string.Format("{0}({1}, {2}, {3});\r\n", databaseName, level, attributeList.Last(), 30));
             }
 
             var databaseContent = databaseLines.Aggregate((content, line) => content += line);
