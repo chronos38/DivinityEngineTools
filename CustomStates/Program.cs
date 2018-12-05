@@ -17,19 +17,21 @@ namespace CustomStates
             var entries = new Dictionary<string, List<Tuple<string, int>>>
             {
                 // Attributes
-                { "Strength", new List<Tuple<string, int>> { Tuple.Create("DamageBoost", 3), Tuple.Create("ArmorBoost", 2) } },
+                { "Strength", new List<Tuple<string, int>> { } },
                 { "Finesse", new List<Tuple<string, int>> { Tuple.Create("Initiative", 1), Tuple.Create("DodgeBoost", 1) } },
-                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("RangeBoost", 20), Tuple.Create("MagicArmorBoost", 2) } },
-                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("VitalityBoost", 5), Tuple.Create("ArmorBoost", 2) } },
-                { "Memory", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 1), Tuple.Create("MagicArmorBoost", 2) } },
-                { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("DodgeBoost", 1) } },
-                // Abilities
-                { "WarriorLore", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 3), Tuple.Create("MagicArmorBoost", 3) } },
-                { "RogueLore", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 1) } },
-                { "FireSpecialist", new List<Tuple<string, int>> { Tuple.Create("CriticalChance", 3) } },
-                { "EarthSpecialist", new List<Tuple<string, int>> { Tuple.Create("VitalityBoost", 3), Tuple.Create("AccuracyBoost", 3) } },
-                { "WaterSpecialist", new List<Tuple<string, int>> { Tuple.Create("Movement", 30) } },
-                { "AirSpecialist", new List<Tuple<string, int>> { Tuple.Create("DodgeBoost", 3) } }
+                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("MagicArmorBoost", 5) } },
+                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 5) } },
+                { "Memory", new List<Tuple<string, int>>
+                            {
+                                Tuple.Create("PhysicalResistance", 1),
+                                Tuple.Create("FireResistance", 1),
+                                Tuple.Create("AirResistance", 1),
+                                Tuple.Create("EarthResistance", 1),
+                                Tuple.Create("PoisonResistance", 1),
+                                Tuple.Create("WaterResistance", 1)
+                            }
+                },
+                { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("CriticalChance", 1) } }
             };
 
             foreach (var entry in entries)
