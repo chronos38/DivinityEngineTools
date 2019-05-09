@@ -22,13 +22,13 @@ namespace TranslationKeys
             {
                 for (int i = -10; i <= 50; i++)
                 {
-                    content += "<node id=\"TranslatedStringKey\">";
-                    content += $"<attribute id=\"Content\" value=\"{attribute}\" type=\"28\" handle=\"ls::TranslatedStringRepository::s_HandleUnknown\" />";
-                    content += "<attribute id=\"ExtraData\" value=\"\" type=\"23\" />";
-                    content += "<attribute id=\"Speaker\" value=\"\" type=\"22\" />";
-                    content += "<attribute id=\"Stub\" value=\"True\" type=\"19\" />";
-                    content += $"<attribute id=\"UUID\" value=\"Chronos38_Stats_{attribute}_{i}\" type=\"22\" />";
-                    content += "</node>";
+                    content += "<node id=\"TranslatedStringKey\">\r\n";
+                    content += $"<attribute id=\"Content\" value=\"{attribute}\" type=\"28\" handle=\"ls::TranslatedStringRepository::s_HandleUnknown\" />\r\n";
+                    content += "<attribute id=\"ExtraData\" value=\"\" type=\"23\" />\r\n";
+                    content += "<attribute id=\"Speaker\" value=\"\" type=\"22\" />\r\n";
+                    content += "<attribute id=\"Stub\" value=\"True\" type=\"19\" />\r\n";
+                    content += $"<attribute id=\"UUID\" value=\"Chronos38_Stats_{attribute}_{i}\" type=\"22\" />\r\n";
+                    content += "</node>\r\n";
                 }
             }
 
