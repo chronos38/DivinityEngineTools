@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TranslationKeys": {
+      "commandName": "Project",
+      "commandLineArgs": "Status_CONSUME_DisplayName.lsx"
+    }
+  }
+}

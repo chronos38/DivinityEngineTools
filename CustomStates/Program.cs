@@ -17,21 +17,12 @@ namespace CustomStates
             var entries = new Dictionary<string, List<Tuple<string, int>>>
             {
                 // Attributes
-                { "Strength", new List<Tuple<string, int>> { } },
-                { "Finesse", new List<Tuple<string, int>> { Tuple.Create("Initiative", 1), Tuple.Create("DodgeBoost", 1) } },
-                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("MagicArmorBoost", 5) } },
-                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("ArmorBoost", 5) } },
-                { "Memory", new List<Tuple<string, int>>
-                            {
-                                Tuple.Create("PhysicalResistance", 1),
-                                Tuple.Create("FireResistance", 1),
-                                Tuple.Create("AirResistance", 1),
-                                Tuple.Create("EarthResistance", 1),
-                                Tuple.Create("PoisonResistance", 1),
-                                Tuple.Create("WaterResistance", 1)
-                            }
-                },
-                { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 3), Tuple.Create("CriticalChance", 1) } }
+                //{ "Strength", new List<Tuple<string, int>> { } },
+                { "Finesse", new List<Tuple<string, int>> { Tuple.Create("Initiative", 1), Tuple.Create("DodgeBoost", 1)/*, Tuple.Create("Movement", 20)*/ } },
+                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("MagicArmor", 5) } },
+                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("Armor", 5) } },
+                //{ "Memory", new List<Tuple<string, int>> { } },
+                { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 1)/*, Tuple.Create("RangeBoost", 100)*/ } }
             };
 
             foreach (var entry in entries)
