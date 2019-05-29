@@ -19,8 +19,8 @@ namespace CustomStates
                 // Attributes
                 //{ "Strength", new List<Tuple<string, int>> { } },
                 { "Finesse", new List<Tuple<string, int>> { Tuple.Create("Initiative", 1), Tuple.Create("DodgeBoost", 1)/*, Tuple.Create("Movement", 20)*/ } },
-                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("MagicArmor", 5) } },
-                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("Armor", 5) } },
+                { "Intelligence", new List<Tuple<string, int>> { Tuple.Create("FireResistance", 1), Tuple.Create("WaterResistance", 1), Tuple.Create("AirResistance", 1), Tuple.Create("EarthResistance", 1) } },
+                { "Constitution", new List<Tuple<string, int>> { Tuple.Create("PhysicalResistance", 1), Tuple.Create("PoisonResistance", 1) } },
                 //{ "Memory", new List<Tuple<string, int>> { } },
                 { "Wits", new List<Tuple<string, int>> { Tuple.Create("AccuracyBoost", 1)/*, Tuple.Create("RangeBoost", 100)*/ } }
             };
